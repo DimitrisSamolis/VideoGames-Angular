@@ -1,0 +1,12 @@
+<app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+
+<div class="gamediscover">
+    <h3>Upcoming Games</h3>
+    <li *ngFor="let game of upComingGames">
+        {{ game.name }} - {{ game.added }}
+    </li>
+    <h3>Popular Games</h3>
+    <li *ngFor="let game of popularGames">
+        {{ game.name }} - {{ game.added }}
+    </li>
+</div>
