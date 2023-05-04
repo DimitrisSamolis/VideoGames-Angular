@@ -11,12 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 
 export class HomepageComponent implements OnInit{
   showHomePage = true;
-  onSearch(searchTerm: string) {
-    console.log(`Searching for "${searchTerm}"...`);
-    // Perform search logic here
-  }
-
-
+  
+  
   gameScreenshots!: any[];
   upComingGames: any[] = [];
   popularGames: any[] = [];

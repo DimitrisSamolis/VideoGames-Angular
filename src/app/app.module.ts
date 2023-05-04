@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'; 
+import { HomepageComponent } from './homepage/homepage.component';
+import { DetailspageComponent } from './components/detailspage/detailspage.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomepageComponent } from './homepage/homepage.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
-import { DetailspageComponent } from './components/detailspage/detailspage.component';
+import { FormsModule } from '@angular/forms';
+
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -29,7 +30,7 @@ const routes: Routes = [
     DetailspageComponent
   ],
   imports: [
-    RouterModule.forRoot(routes, {enableTracing: true}),
+    RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     FormsModule,
