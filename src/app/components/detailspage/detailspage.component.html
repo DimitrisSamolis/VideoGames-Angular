@@ -1,0 +1,7 @@
+<div class="game-details" *ngFor="let game of gamesIds">
+    <h2>{{ game.name }}</h2>
+    <img [src]="game.background_image" alt="{{ game.name }} cover">
+    <p>Released on {{ game.released }}</p>
+    <p>Rated {{ game.rating }} / 5</p>
+    <p>{{ game.description }}</p>
+</div>
