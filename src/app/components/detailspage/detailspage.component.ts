@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { API_KEY } from 'src/app/config';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-detailspage',
@@ -12,11 +14,16 @@ export class DetailspageComponent implements OnInit {
   gameId: number | undefined;
   gameDetails: any;
   gameScreenshots!: any[];
+  public sanitizer: DomSanitizer;
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    sanitizer: DomSanitizer //cancel every HTML element for description
+  ) {
+    this.sanitizer = sanitizer;
+
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -34,5 +41,11 @@ export class DetailspageComponent implements OnInit {
         this.gameScreenshots = data.results;
       });
     });
+
   }
+  //cancel every HTML element for description
+  sanitizeDescription(description: string): any {
+    return this.sanitizer.bypassSecurityTrustHtml(description);
+  }
+  
 }
