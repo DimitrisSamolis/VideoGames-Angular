@@ -1,8 +1,9 @@
 
 <div class="game-details" *ngIf="gameDetails">
+    <div class="game-cover" [style.background-image]="'url(' + gameDetails.background_image + ')'"></div>
     <h2>{{ gameDetails.name }}</h2>
     <p><strong>Release date:</strong> {{ gameDetails.released }}</p>
-    <p><strong>Rating:</strong> {{ gameDetails.rating }}/5</p>
+    <p><strong>Rating:</strong> {{ gameDetails.rating !== 0 ? gameDetails.rating + '/5' : 'Not available yet...' }}</p>
   </div>
   
   <div class="screenshots" *ngIf="gameScreenshots">

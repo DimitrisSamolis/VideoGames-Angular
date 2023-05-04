@@ -1,7 +1,6 @@
 header{
     align-items: center;
     text-align: center;
-    color: white;
     height: 10px;
     font-size: small;
 }
@@ -10,4 +9,18 @@ img{
     width: 20px;
     height: 20px;
     
+}
+.title {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+}
+.title-link {
+    text-decoration: none;
+}
+
+
+.title:hover {
+    color: darkred;
 }
