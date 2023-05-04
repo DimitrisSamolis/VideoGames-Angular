@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_KEY } from '../config';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -9,16 +10,22 @@ import { API_KEY } from '../config';
 })
 
 export class HomepageComponent implements OnInit{
+  showHomePage = true;
   onSearch(searchTerm: string) {
     console.log(`Searching for "${searchTerm}"...`);
     // Perform search logic here
   }
 
+
+  gameScreenshots!: any[];
   upComingGames: any[] = [];
   popularGames: any[] = [];
   newGames: any[] =[];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
 
@@ -48,16 +55,10 @@ export class HomepageComponent implements OnInit{
       this.newGames = data.results;
     });
 
-    //GAME SCREENSHOTS
+    //DetailsPage
 
-
- 
   }
 
-
-
-
-
-
-
 }
+
+

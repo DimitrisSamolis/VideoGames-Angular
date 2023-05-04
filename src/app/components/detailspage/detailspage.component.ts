@@ -3,30 +3,36 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { API_KEY } from 'src/app/config';
 
-
 @Component({
   selector: 'app-detailspage',
   templateUrl: './detailspage.component.html',
   styleUrls: ['./detailspage.component.css']
 })
 export class DetailspageComponent implements OnInit {
-  gamesIds: any[] =[];
+  gameId: number | undefined;
+  gameDetails: any;
+  gameScreenshots!: any[];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    let gameIds: number[] = [];
-    
+    this.route.paramMap.subscribe(params => {
+      this.gameId = Number(params.get('id'));
 
-    // Make the API call and save the game IDs
-    const apiUrl4 = `https://api.rawg.io/api/games/${gameIds}/screenshots?key=${API_KEY}`;
-    this.http.get(apiUrl4).subscribe((data: any) => {
-      // Save the game IDs to the array
-      data.results.forEach((result: any) => {
-        gameIds.push(result.id);
-        this.gamesIds = data.results;
+      // Make the API call and save the game details
+      const apiUrl = `https://api.rawg.io/api/games/${this.gameId}?key=${API_KEY}`;
+      this.http.get(apiUrl).subscribe((data: any) => {
+        this.gameDetails = data;
+      });
+
+      // Make the API call and save the game screenshots
+      const apiUrl2 = `https://api.rawg.io/api/games/${this.gameId}/screenshots?key=${API_KEY}`;
+      this.http.get(apiUrl2).subscribe((data: any) => {
+        this.gameScreenshots = data.results;
       });
     });
   }
-
 }

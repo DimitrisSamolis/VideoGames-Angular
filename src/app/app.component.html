@@ -1,2 +1,10 @@
-<app-search-bar></app-search-bar>
-<router-outlet></router-outlet>
+<div *ngIf="loading">
+<app-loader></app-loader>
+</div>
+<div *ngIf="!loading">
+    <app-search-bar></app-search-bar>
+    <app-header></app-header>
+    <app-homepage></app-homepage>
+    <app-footer></app-footer>
+</div>
+  

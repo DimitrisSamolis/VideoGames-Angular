@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // <-- Add this import
-
+import { FormsModule } from '@angular/forms'; 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -14,8 +13,10 @@ import { SearchpageComponent } from './searchpage/searchpage.component';
 import { DetailspageComponent } from './components/detailspage/detailspage.component';
 
 const routes: Routes = [
+  { path: '', component: HomepageComponent },
   { path: 'detailspage/:id', component: DetailspageComponent }
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,14 +26,15 @@ const routes: Routes = [
     HomepageComponent,
     SearchBarComponent,
     SearchpageComponent,
-    DetailspageComponent,
+    DetailspageComponent
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {enableTracing: true}),
     BrowserModule,
     HttpClientModule,
     FormsModule,
   ],
+  exports:[DetailspageComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

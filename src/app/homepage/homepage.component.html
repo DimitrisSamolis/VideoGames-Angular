@@ -1,40 +1,46 @@
-<app-search-bar></app-search-bar>
+<div *ngIf="showHomePage">
+    <div class="gamediscover">
 
-<div class="gamediscover">
+        <h3>Upcoming Games</h3>
+        <div class="UpComing" *ngFor="let game of upComingGames">
+            <a [routerLink]="['/detailspage', game.id]" (click)="showHomePage = false">
+                <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
+                <div class="game-info">
+                    <h5>{{ game.name }}</h5><br/>
+                    <p>Release Date: {{ game.released }}</p>
+                </div>
+            </a>
+        </div>
+        
+        
 
-    <h3>Upcoming Games</h3>
-    <div class="UpComing" *ngFor="let game of upComingGames">
-        <a [routerLink]="['/detailspage', game.id]">
-            <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
-            <div class="game-info">
-                <h5> {{ game.name }}  </h5> <br/>
-                <p>Release Date: {{ game.released }}</p>
-            </div>
-        </a>
-    </div>
+        <h3>Popular Games</h3>
+        <div class="popular" *ngFor="let game of popularGames">
+            <a [routerLink]="['/detailspage', game.id]" (click)="showHomePage = false">
+                <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
+                <div class="game-info">
+                    <h5> {{ game.name }} </h5> <br/> 
+                    <p>Rated: {{ game.rating }} /5 </p>
+                </div>
+            </a>
+        </div>
 
-    <h3>Popular Games</h3>
-    <div class="popular" *ngFor="let game of popularGames">
-        <a [routerLink]="['/detailspage', game.id]">
-            <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
-            <div class="game-info">
-                <h5> {{ game.name }} </h5> <br/> 
-                <p>Rated: {{ game.rating }} /5 </p>
-            </div>
-        </a>
-    </div>
-
-    <h3>New Games</h3>
-    <div class="new" *ngFor="let game of newGames">
-        <a [routerLink]="['/detailspage', game.id]">
-            <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
-            <div class="game-info">
-                <h5> {{ game.name }}  </h5> <br/>
-                Released on: {{ game.released }}
-            </div>
-        </a>
-    </div>
-
-
+        <h3>New Games</h3>
+        <div class="new" *ngFor="let game of newGames">
+            <a [routerLink]="['/detailspage', game.id]" (click)="showHomePage = false">
+                <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
+                <div class="game-info">
+                    <h5> {{ game.name }}  </h5> <br/>
+                    Released on: {{ game.released }}
+                </div>
+            </a>
+        </div>
 
 </div>
+</div>
+<div *ngIf="!showHomePage">
+
+    <router-outlet></router-outlet>
+
+  </div>
+  

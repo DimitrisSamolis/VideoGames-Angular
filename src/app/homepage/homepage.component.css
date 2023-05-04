@@ -12,6 +12,7 @@ h3{
     justify-content: space-between;
     margin: 15px;
     padding-bottom: 15px;
+    overflow-x: hidden;
 }
 
 .UpComing,
@@ -20,10 +21,8 @@ h3{
     position: relative;
     display: flex;
     flex-direction: column;
-    width: calc(25% - 10px);
     margin-bottom: 20px;
     color: white;
-    
 }
 
 .game-cover {
