@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'detailspage/:id', component: DetailspageComponent }
+  { path: 'detailspage/:id', component: DetailspageComponent },
+  { path: 'search', component: SearchpageComponent }
 ];
 
 @NgModule({

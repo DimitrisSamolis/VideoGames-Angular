@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_KEY } from '../config';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-homepage',
@@ -9,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./homepage.component.css']
 })
 
+
 export class HomepageComponent implements OnInit{
   showHomePage = true;
-  
-  
+  searchResults = [];
   gameScreenshots!: any[];
   upComingGames: any[] = [];
   popularGames: any[] = [];
@@ -20,8 +21,13 @@ export class HomepageComponent implements OnInit{
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router 
+
   ) {}
+  onClick() {
+    this.showHomePage = false;
+  }
 
   ngOnInit() {
 
@@ -51,10 +57,9 @@ export class HomepageComponent implements OnInit{
       this.newGames = data.results;
     });
 
-    //DetailsPage
+    //SearchPage
+    
 
   }
 
 }
-
-

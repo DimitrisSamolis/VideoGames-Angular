@@ -9,10 +9,11 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'video-games';
   loading = true;
+  public currentUrl: string = '';
 
-  gameDetails: any;
-
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    router.events.subscribe((_: any) => this.currentUrl = router.url);
+  }
 
   ngOnInit() {
     // Simulate loading data
