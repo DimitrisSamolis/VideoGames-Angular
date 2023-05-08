@@ -8,19 +8,30 @@ header{
 img{
     width: 20px;
     height: 20px;
-    
 }
-.title {
-    text-decoration: none;
+
+.title{
     cursor: pointer;
     color: white;
     padding: 5px;
 }
-.title-link {
+
+.title-link,
+.favorite-link{
     text-decoration: none;
 }
 
+.favorite {
+    color:rgba(255, 255, 255, 0.382);
+    font-size: small;
+    text-align: right;
+    padding: 8px;
+}
 
-.title:hover {
+
+.title:hover,
+.favorite:hover {
     color: darkred;
 }
+
+

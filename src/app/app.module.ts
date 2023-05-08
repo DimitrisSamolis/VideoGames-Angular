@@ -11,12 +11,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { FormsModule } from '@angular/forms';
+import { FavoritepageComponent } from './favoritepage/favoritepage.component';
 
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'detailspage/:id', component: DetailspageComponent },
-  { path: 'search', component: SearchpageComponent }
+  { path: 'search', component: SearchpageComponent },
+  {path: 'favorites', component: FavoritepageComponent}
 ];
 
 @NgModule({
@@ -28,7 +30,8 @@ const routes: Routes = [
     HomepageComponent,
     SearchBarComponent,
     SearchpageComponent,
-    DetailspageComponent
+    DetailspageComponent,
+    FavoritepageComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

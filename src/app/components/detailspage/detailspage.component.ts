@@ -23,7 +23,6 @@ export class DetailspageComponent implements OnInit {
     sanitizer: DomSanitizer //cancel every HTML element for description
   ) {
     this.sanitizer = sanitizer;
-
   }
 
   ngOnInit() {

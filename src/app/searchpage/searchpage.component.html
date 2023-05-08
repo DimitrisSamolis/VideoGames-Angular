@@ -1,6 +1,7 @@
 <div *ngIf="loading">
   <app-loader></app-loader>
-  </div>
+</div>
+
 <div *ngIf="!loading">
   <div class="gamediscover">
     <h3>Search Results</h3>
@@ -11,6 +12,11 @@
       <div class="search-results" *ngFor="let game of games">
         <a [routerLink]="['/detailspage', game.id]">
           <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
+        </a>
+        <span class="favorite-icon">
+          <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavorite(game)"></i>
+        </span>
+        <a [routerLink]="['/detailspage', game.id]">
           <div class="game-info">
             <h5>{{ game.name }}</h5><br/>
             <p>Release Date: {{ game.released }}</p>
