@@ -14,6 +14,7 @@ export class DetailspageComponent implements OnInit {
   gameId: number | undefined;
   gameDetails: any;
   gameScreenshots!: any[];
+  loading = true;
   public sanitizer: DomSanitizer;
 
   constructor(
@@ -42,10 +43,15 @@ export class DetailspageComponent implements OnInit {
       });
     });
 
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000);
+
   }
   //cancel every HTML element for description
   sanitizeDescription(description: string): any {
     return this.sanitizer.bypassSecurityTrustHtml(description);
   }
+
   
 }

@@ -9,23 +9,30 @@ import { API_KEY } from '../config';
   styleUrls: ['./searchpage.component.css']
 })
 export class SearchpageComponent implements OnInit {
-  searchTerm: string = '';
   games: any[] = [];
-
+  loading = true;
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+ ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const gameName = params['searchTerm'];
-      const apiUrl = `https://api.rawg.io/api/games?key=${API_KEY}&search=${gameName}&page_size=9`;
+      const searchTerm = params['searchTerm'];
+      if (!searchTerm) {
+        this.games = [];
+        return; // exit method early
+      }
+      const apiUrl = `https://api.rawg.io/api/games?key=${API_KEY}&search=${searchTerm}&page_size=9`;
       this.http.get(apiUrl).subscribe((data: any) => {
         this.games = data.results;
       });
     });
-  }
-}
 
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000);
+  }
+  
+}

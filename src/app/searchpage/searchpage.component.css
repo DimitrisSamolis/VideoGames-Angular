@@ -1,12 +1,4 @@
-.gamediscover {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 15px;
-  padding-bottom: 15px;
-}
-
-.gamediscover h3 {
+h3{
   color: white;
   text-align: center;
   position: relative;
@@ -14,14 +6,24 @@
   padding-bottom: 50px;
   flex-basis: 100%;   
 }
-
-.search-results {
+.gamediscover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 15px;
+  padding-bottom: 15px;
+  overflow-x: hidden;
 }
 
-.search-results .game-cover {
+.search-results {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.game-cover {
   position: relative;
   background-size: cover;
   background-position: center;
@@ -29,13 +31,13 @@
   height: 300px;
   width: 100%;
 }
+.game-cover:hover {
+box-shadow: 0px 0px 10px rgba(243, 7, 7, 0.5);
+transform: translateY(-3px);
 
-.search-results .game-cover:hover {
-  box-shadow: 0px 0px 10px rgba(243, 7, 7, 0.5);
-  transform: translateY(-3px);
 }
 
-.search-results .game-info {
+.game-info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -46,56 +48,53 @@
   padding: 3px;
 }
 
-.search-results .game-info h5 {
+.game-info h5 {
   margin: 0;
   font-size: 14px;
   padding-top: 20px;
 }
 
-.search-results .game-info p {
+.game-info p {
   margin: 0;
   font-size: 12px;
   padding-bottom: 20px;
 }
 
-.no-results-message {
-  text-align: center;
-  margin-top: 50px;
-}
 
 .no-results-message p {
-  font-size: 18px;
-  color: darkred;
-  font-weight: bold;
   text-align: center;
-  
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* Media queries for responsive design */
 
+/* phones */
 @media screen and (max-width: 575px) {
-  .search-results .game-info {
-    height: 80px;
+  .search-results {
+    width: 100%;
   }
 }
 
+/* tablets */
 @media screen and (min-width: 576px) and (max-width: 767px) {
-  .search-results .game-cover {
-    height: 200px;
-  }
-  .search-results .game-info {
-    height: 90px;
+  .search-results {
+    width: calc(50% - 10px);
   }
 }
 
+/* desktops */
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .search-results .game-cover {
-    height: 250px;
+  .search-results {
+    width: calc(33.33% - 10px);
   }
 }
 
+/* large desktops */
 @media screen and (min-width: 992px) {
-  .search-results .game-cover {
-    height: 300px;
+  .search-results {
+    width: calc(25% - 10px);
   }
 }

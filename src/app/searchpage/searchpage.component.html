@@ -1,9 +1,14 @@
-
-<div class="gamediscover">
+<div *ngIf="loading">
+  <app-loader></app-loader>
+  </div>
+<div *ngIf="!loading">
+  <div class="gamediscover">
     <h3>Search Results</h3>
-  
-    <div *ngIf="searchTerm && games.length > 0">
-       <div class="search-results" *ngFor="let game of games">
+    <div *ngIf="games.length === 0; else gameList" class="no-results-message">
+      <p>Please search for something else...</p>
+    </div>
+    <ng-template #gameList>
+      <div class="search-results" *ngFor="let game of games">
         <a [routerLink]="['/detailspage', game.id]">
           <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
           <div class="game-info">
@@ -12,11 +17,6 @@
           </div>
         </a>
       </div>
-    </div>
-  
-    <div *ngIf="games.length === 0 ">
-      <div class="no-results-message">
-        <p>Sorry, no results found. Please try searching for something else.</p>
-      </div>
-    </div>
- </div>
+    </ng-template>
+  </div>
+</div>

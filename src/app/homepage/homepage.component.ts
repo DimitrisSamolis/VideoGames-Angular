@@ -56,8 +56,6 @@ export class HomepageComponent implements OnInit{
     this.http.get(apiUrl3).subscribe((data: any) => {
       this.newGames = data.results;
     });
-
-    //SearchPage
     
 
   }
