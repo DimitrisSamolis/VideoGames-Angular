@@ -47,16 +47,10 @@ export class HomepageComponent implements OnInit{
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router 
-
   ) {}
-  onClick() {
-    this.showHomePage = false;
-  }
+  onClick() {this.showHomePage = false;}
  
-  
-
   ngOnInit() {
-     // get favorites from local storage
 
     //UPCOMING GAMES
     const nextYear = new Date();
@@ -66,15 +60,15 @@ export class HomepageComponent implements OnInit{
     const apiUrl1 = `https://api.rawg.io/api/games?key=${API_KEY}&dates=${currentDate},${nextYearDate}&ordering=-added&page_size=10`;
 
     // Save data in sessionStorage
-  const upComingGamesData = sessionStorage.getItem('upComingGames');
-  if (upComingGamesData) {
-    this.upComingGames = JSON.parse(upComingGamesData);
-  } else {
-    this.http.get(apiUrl1).subscribe((data: any) => {
-      this.upComingGames = data.results;
-      sessionStorage.setItem('upComingGames', JSON.stringify(data.results));
-    });
-  }
+    const upComingGamesData = sessionStorage.getItem('upComingGames');
+    if (upComingGamesData) {
+      this.upComingGames = JSON.parse(upComingGamesData);
+    } else {
+      this.http.get(apiUrl1).subscribe((data: any) => {
+        this.upComingGames = data.results;
+        sessionStorage.setItem('upComingGames', JSON.stringify(data.results));
+      });
+    }
 
     //POPULAR GAMES
     const lastYear = new Date();
@@ -82,14 +76,13 @@ export class HomepageComponent implements OnInit{
     const lastYearDate = lastYear.toISOString().slice(0, 10);
     const apiUrl2 = `https://api.rawg.io/api/games?key=${API_KEY}&dates=${lastYearDate},${currentDate}&ordering=-rating&page_size=10`;
 
-     // Save data in sessionStorage
+    // Save data in sessionStorage
     const popularGamesData = sessionStorage.getItem('popularGames');
     if (popularGamesData) {
       this.popularGames = JSON.parse(popularGamesData);
     } else {
       this.http.get(apiUrl2).subscribe((data: any) => {
         this.popularGames = data.results;
-        // Save data to sessionStorage
         sessionStorage.setItem('popularGames', JSON.stringify(data.results));
       });
     }
@@ -97,7 +90,7 @@ export class HomepageComponent implements OnInit{
     //NEW GAMES
     const apiUrl3 = `https://api.rawg.io/api/games?key=${API_KEY}&dates=${lastYearDate},${currentDate}&ordering=-released&page_size=10`;
     
-     // Save data in sessionStorage
+      // Save data in sessionStorage
     const newGamesData = sessionStorage.getItem('newGames');
     if (newGamesData) {
       this.newGames = JSON.parse(newGamesData);
@@ -107,8 +100,5 @@ export class HomepageComponent implements OnInit{
         sessionStorage.setItem('newGames', JSON.stringify(data.results));
       });
     }
-    
-
   }
-
 }

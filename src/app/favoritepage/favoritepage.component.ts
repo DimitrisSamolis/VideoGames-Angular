@@ -12,6 +12,7 @@ interface Game {
   templateUrl: './favoritepage.component.html',
   styleUrls: ['./favoritepage.component.css']
 })
+
 export class FavoritepageComponent implements OnInit {
   favorites: any[] = [];
   loading = true;

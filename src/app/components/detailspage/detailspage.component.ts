@@ -10,6 +10,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   templateUrl: './detailspage.component.html',
   styleUrls: ['./detailspage.component.css']
 })
+
 export class DetailspageComponent implements OnInit {
   gameId: number | undefined;
   gameDetails: any;
@@ -21,9 +22,7 @@ export class DetailspageComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     sanitizer: DomSanitizer //cancel every HTML element for description
-  ) {
-    this.sanitizer = sanitizer;
-  }
+  ) {this.sanitizer = sanitizer;}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -45,12 +44,10 @@ export class DetailspageComponent implements OnInit {
     setTimeout(() => {
       this.loading = false;
     }, 2000);
-
   }
+
   //cancel every HTML element for description
   sanitizeDescription(description: string): any {
     return this.sanitizer.bypassSecurityTrustHtml(description);
   }
-
-  
 }

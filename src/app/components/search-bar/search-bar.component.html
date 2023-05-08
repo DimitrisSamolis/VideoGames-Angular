@@ -1,6 +1,4 @@
-
 <div class="search-bar">
-  
   <form class="search-form" #form="ngForm" (ngSubmit)="searchGames(form.value.search)">
     <input name="search" [(ngModel)]="searchTerm" type="text" placeholder="Search for Game Tiles...">
     <button type="submit" class="search">Search</button>

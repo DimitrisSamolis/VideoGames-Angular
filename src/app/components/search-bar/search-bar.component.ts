@@ -8,6 +8,7 @@ import { API_KEY } from 'src/app/config';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
+
 export class SearchBarComponent implements OnInit {
   searchTerm: string = '';
   games: any[] = [];
@@ -23,8 +24,6 @@ export class SearchBarComponent implements OnInit {
     this.http.get<any>(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchTerm}&page_size=9`).subscribe(data => {
       this.games = data.results;
       this.router.navigate(['search'], { queryParams: { searchTerm } });
-
     });
   }
-  
 }

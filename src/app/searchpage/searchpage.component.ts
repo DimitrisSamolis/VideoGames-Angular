@@ -15,6 +15,7 @@ interface Game {
   templateUrl: './searchpage.component.html',
   styleUrls: ['./searchpage.component.css']
 })
+
 export class SearchpageComponent implements OnInit {
   games: any[] = [];
   loading = true;
@@ -36,7 +37,6 @@ export class SearchpageComponent implements OnInit {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
   
-
   isFavorite(game: Game): boolean {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     return favorites.some((f: { id: number; }) => f.id === game.id);
@@ -59,5 +59,4 @@ export class SearchpageComponent implements OnInit {
       this.loading = false;
     }, 2000);
   }
-  
 }

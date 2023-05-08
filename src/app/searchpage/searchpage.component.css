@@ -6,6 +6,7 @@ h3{
   padding-bottom: 50px;
   flex-basis: 100%;   
 }
+
 .gamediscover {
   display: flex;
   flex-wrap: wrap;
@@ -31,6 +32,7 @@ h3{
   height: 300px;
   width: 100%;
 }
+
 .game-cover:hover {
 box-shadow: 0px 0px 10px rgba(243, 7, 7, 0.5);
 transform: translateY(-3px);
@@ -59,7 +61,6 @@ transform: translateY(-3px);
   font-size: 12px;
   padding-bottom: 20px;
 }
-
 
 .no-results-message p {
   text-align: center;
