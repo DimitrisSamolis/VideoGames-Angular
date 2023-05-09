@@ -3,11 +3,13 @@
 </div>
 <div *ngIf="!loading">
     <div class="game-details" *ngIf="gameDetails">
-        <div class="game-cover" [style.background-image]="'url(' + gameDetails.background_image + ')'"></div>
+        <div class="game-cover" [style.background-image]="gameDetails.background_image ? 'url(' + gameDetails.background_image + ')' : ''">
+            <span *ngIf="!gameDetails.background_image" style="color: red;font-weight:bold; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">Game cover not available</span>
+          </div>         
         <h2>{{ gameDetails.name }}</h2>
-        <p><strong>Description:</strong> <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(gameDetails.description)"></span></p> <!--cancel every HTML element-->
-        <p><strong>Release date:</strong> {{ gameDetails.released }}</p>
-        <p><strong>Rating:</strong> {{ gameDetails.rating !== 0 ? gameDetails.rating + '/5' : 'Not available yet...' }}</p> <!--if the game is new show text-->
+        <p><strong>Description:</strong> <span *ngIf="gameDetails.description" [innerHTML]="sanitizer.bypassSecurityTrustHtml(gameDetails.description)"></span><span *ngIf="!gameDetails.description">Description not available</span></p>
+        <p><strong>Release date:</strong> {{ gameDetails.released ? gameDetails.released : 'Not available...' }}</p> <!-- if released date is null -->
+        <p><strong>Rated:</strong> {{ gameDetails.rating !== 0 ? gameDetails.rating + '/5' : 'Not available yet...' }}</p> <!--if the game is new show text-->
     </div>
     <div class="screenshots" *ngIf="gameScreenshots">
         <div class="screenshot" *ngFor="let screenshot of gameScreenshots">

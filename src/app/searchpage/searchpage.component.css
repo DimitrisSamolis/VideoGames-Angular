@@ -59,7 +59,7 @@ transform: translateY(-3px);
 .game-info p {
   margin: 0;
   font-size: 12px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 .no-results-message p {

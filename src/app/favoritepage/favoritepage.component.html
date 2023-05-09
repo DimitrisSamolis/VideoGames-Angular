@@ -6,17 +6,19 @@
         <h3> Your favorite games</h3>
         <div class="favorites"  *ngFor="let game of favorites">
             <a [routerLink]="['/detailspage', game.id]">
-                <div class="game-cover" [style.background-image]="'url(' + game.background_image + ')'"></div>
-              </a>
-              <span class="favorite-icon">
-                <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavorite(game)"></i>
-              </span>
-              <a [routerLink]="['/detailspage', game.id]">
-                <div class="game-info">
-                  <h5>{{ game.name }}</h5><br/>
-                  <p>Release Date: {{ game.released }}</p>
-                </div>
-              </a>
+              <div class="game-cover" [style.background-image]="game.background_image ? 'url(' + game.background_image + ')' : ''">
+                <span *ngIf="!game.background_image" style="color: red;display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">Game cover not available</span>
+              </div>           
+            </a>
+            <span class="favorite-icon">
+              <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavorite(game)"></i>
+            </span>
+            <a [routerLink]="['/detailspage', game.id]">
+              <div class="game-info">
+                <h5>{{ game.name }}</h5><br/>
+                <p>Release date: {{ game.released ? game.released : 'Not available...' }}</p> <!-- check if released date is null -->
+              </div>
+            </a>
         </div>
     </div>
 </div>
