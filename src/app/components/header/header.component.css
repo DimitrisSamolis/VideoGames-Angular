@@ -2,14 +2,15 @@ header{
     align-items: center;
     text-align: center;
     height: 10px;
-    font-size: small;
+    font-size: 28;
 }
 
 img{
     width: 20px;
     height: 20px;
+    animation: pulse 2s infinite;
 }
-
+  
 .title{
     cursor: pointer;
     color: white;
@@ -22,16 +23,40 @@ img{
 }
 
 .favorite {
-    color:rgba(255, 255, 255, 0.382);
+    color: rgb(255 255 255 / 70%);
     font-size: small;
     text-align: right;
     padding: 8px;
+    position: absolute;
+    right: 10px;
+    border-radius: 25px;
+    background-color: darkred;
 }
 
-
-.title:hover,
-.favorite:hover {
+.title:hover {
     color: darkred;
 }
 
+.favorite:hover {
+    color: rgba(0, 0, 0, 0.647);
+}
 
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .favorite {
+        margin-top: 48px;
+        padding: 5px;
+        font-size: x-small;
+    }
+  }

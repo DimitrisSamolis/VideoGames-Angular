@@ -26,14 +26,16 @@ input[type="text"] {
 
 button.search {
   border: none;
-  background-color: #ee3a4c;
+  background-color: #8b0000d6;
   color: #fff;
   font-size: 14px;
   cursor: pointer;
   height: 40px;
   margin-left: 5px;
+  width: 80px;
 }
 
 button.search:hover {
   background-color: #ee1a29;
 }
+
