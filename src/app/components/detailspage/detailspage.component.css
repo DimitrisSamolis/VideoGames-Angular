@@ -54,3 +54,49 @@
 .screenshot:hover img {
   transform: scale(1.5);
 }
+
+/* OR WITH A FLOW
+.screenshots {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.screenshot {
+  flex-shrink: 0;
+  width: 370px;
+  margin: 50px;
+  height: 250.5px;
+  margin-right: 10px;
+  border: 1px solid #0000;
+  box-shadow: 0 0 5px rgb(255 255 255);
+  overflow: hidden;
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.screenshot img{
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; 
+}
+
+.screenshot:last-child {
+  margin-right: 0;
+}
+
+
+@keyframes screenshots-roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 10px));
+  }
+}
+
+.screenshots .screenshot {
+  animation: screenshots-roll 10s linear infinite;
+} */

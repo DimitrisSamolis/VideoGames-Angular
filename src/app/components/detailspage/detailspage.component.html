@@ -4,8 +4,19 @@
 <div *ngIf="!loading">
     <div class="game-details" *ngIf="gameDetails">
         <div class="game-cover" [style.background-image]="gameDetails.background_image ? 'url(' + gameDetails.background_image + ')' : ''">
-            <span *ngIf="!gameDetails.background_image" style="color: red;font-weight:bold; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">Game cover not available</span>
-          </div>         
+            <span *ngIf="!gameDetails.background_image" style="
+            color: rgb(255 255 255);
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: #b00505cc;
+            width:160px;
+            border-radius: 25px;">
+            <strong>ERROR</strong> <br/> Game cover unavailabe</span>
+        </div>         
         <h2>{{ gameDetails.name }}</h2>
         <p><strong>Description:</strong> <span *ngIf="gameDetails.description" [innerHTML]="sanitizer.bypassSecurityTrustHtml(gameDetails.description)"></span><span *ngIf="!gameDetails.description">Description not available</span></p>
         <p><strong>Release date:</strong> {{ gameDetails.released ? gameDetails.released : 'Not available...' }}</p> <!-- if released date is null -->

@@ -7,7 +7,17 @@
         <div class="favorites"  *ngFor="let game of favorites">
             <a [routerLink]="['/detailspage', game.id]">
               <div class="game-cover" [style.background-image]="game.background_image ? 'url(' + game.background_image + ')' : ''">
-                <span *ngIf="!game.background_image" style="color: red;display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">Game cover not available</span>
+                <span *ngIf="!game.background_image" style="
+                color: rgb(255 255 255);
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                background-color: rgb(255 0 0 / 33%);
+                border-radius: 25px;">
+                <strong>ERROR</strong> <br/> Game cover unavailabe</span>
               </div>           
             </a>
             <span class="favorite-icon">
