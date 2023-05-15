@@ -38,8 +38,8 @@ img{
     color: darkred;
 }
 
-.favorite:hover {
-    color: rgba(0, 0, 0, 0.647);
+.favorite:hover{
+    box-shadow: 0px 0px 20px 5px rgba(179, 179, 179, 0.39);
 }
 
 @keyframes pulse {
@@ -55,10 +55,10 @@ img{
 }
 
 @media screen and (max-width: 450px) {
-    .favorite {
+    .favorite{
         margin-top: 40px;
         right: 10px;
         padding: 5px;
         font-size: x-small;
     }
-  }
+}

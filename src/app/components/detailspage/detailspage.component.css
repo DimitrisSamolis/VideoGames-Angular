@@ -57,7 +57,7 @@
   transform: scale(1.5);
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:600px) { 
 
   .game-cover{
     height: 500px;
@@ -65,8 +65,9 @@
   
 }
 
-/* FLOW SCREENSHOTS
-.screenshots {
+
+/* FLOW SCREENSHOTS */
+/* .screenshots {
   display: flex;
   overflow: hidden;
   width: 100%;
@@ -109,6 +110,6 @@
 
 .screenshots .screenshot {
   animation: screenshots-roll 10s linear infinite;
-} */
+}  */
 
 

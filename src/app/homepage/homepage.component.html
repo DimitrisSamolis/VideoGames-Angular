@@ -29,7 +29,7 @@
                 </div>
             </a>
         </div>
-          
+        
         <h3>Popular Games</h3>
         <div class="popular" *ngFor="let game of popularGames">
             <a [routerLink]="['/detailspage', game.id]" (click)="showHomePage = false">
