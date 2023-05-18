@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { API_KEY } from '../config';
+import { FavoritesService } from '../sevices/favorites.service';
 
 interface Game {
   id: number;
@@ -22,24 +23,16 @@ export class SearchpageComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private favoritesService : FavoritesService
   ) {}
 
-  
-  toggleFavorite(game: Game): void {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    const index = favorites.findIndex((f: { id: number; }) => f.id === game.id);
-    if (index > -1) {
-      favorites.splice(index, 1);
-    } else {
-      favorites.push(game);
-    }
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+  toggleFavoriteHandler(game: Game) {
+    this.favoritesService.toggleFavorite(game)
   }
-  
+
   isFavorite(game: Game): boolean {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    return favorites.some((f: { id: number; }) => f.id === game.id);
+    return this.favoritesService.isFavorite(game)
   }
 
  ngOnInit(): void {

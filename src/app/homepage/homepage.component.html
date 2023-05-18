@@ -20,7 +20,7 @@
                 </div>               
             </a>
             <span class="favorite-icon">
-                <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavorite(game)"></i>
+                <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavoriteHandler(game)"></i>
             </span>
             <a [routerLink]="['/detailspage', game.id]" (click)="showHomePage = false">
                 <div class="game-info">
@@ -48,7 +48,7 @@
                 </div>      
             </a>
             <span class="favorite-icon">
-                <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavorite(game)"></i>
+                <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavoriteHandler(game)"></i>
             </span>
             <a [routerLink]="['/detailspage', game.id]" (click)="showHomePage = false">
                 <div class="game-info">
@@ -76,7 +76,7 @@
                 </div>      
             </a>
             <span class="favorite-icon">
-                <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavorite(game)"></i>
+                <i class="fa fa-heart" [class.favorite]="isFavorite(game)" (click)="toggleFavoriteHandler(game)"></i>
             </span>
             <a [routerLink]="['/detailspage', game.id]" (click)="showHomePage = false">
                 <div class="game-info">

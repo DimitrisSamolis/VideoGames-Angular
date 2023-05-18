@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_KEY } from '../config';
 import { ActivatedRoute, Router} from '@angular/router';
+import { FavoritesService } from '../sevices/favorites.service';
+
 
 interface Game {
   id: number;
@@ -25,30 +27,22 @@ export class HomepageComponent implements OnInit{
   popularGames: any[] = [];
   newGames: any[] =[]; 
 
-  toggleFavorite(game: Game): void {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    const index = favorites.findIndex((f: { id: number; }) => f.id === game.id);
-    if (index > -1) {
-      favorites.splice(index, 1);
-    } else {
-      favorites.push(game);
-    }
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }
-  
-
-  isFavorite(game: Game): boolean {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    return favorites.some((f: { id: number; }) => f.id === game.id);
-  }
-  
-
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router 
+    private router: Router,
+    private favoritesService : FavoritesService
   ) {}
+  
   onClick() {this.showHomePage = false;}
+
+  toggleFavoriteHandler(game: Game) {
+    this.favoritesService.toggleFavorite(game)
+  }
+
+  isFavorite(game: Game): boolean {
+    return this.favoritesService.isFavorite(game)
+  }
  
   ngOnInit() {
 
@@ -90,7 +84,7 @@ export class HomepageComponent implements OnInit{
     //NEW GAMES
     const apiUrl3 = `https://api.rawg.io/api/games?key=${API_KEY}&dates=${lastYearDate},${currentDate}&ordering=-released&page_size=10`;
     
-      // Save data in sessionStorage
+    // Save data in sessionStorage
     const newGamesData = sessionStorage.getItem('newGames');
     if (newGamesData) {
       this.newGames = JSON.parse(newGamesData);

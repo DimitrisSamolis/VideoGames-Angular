@@ -2,7 +2,7 @@
     <app-loader></app-loader>
 </div>
 
-<div *ngIf="!loading">
+<div [hidden]="loading">
     <app-header></app-header>
     <app-search-bar></app-search-bar>
     <router-outlet></router-outlet>
