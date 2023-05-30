@@ -1,6 +1,7 @@
 # VideoGames
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
+It's a web application with VideoGames using an api.
 
 ## Development server
 
