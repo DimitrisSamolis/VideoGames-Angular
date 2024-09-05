@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_KEY } from '../config';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface Game {
   id: number;
@@ -17,40 +17,58 @@ interface Game {
 })
 
 
-export class HomepageComponent implements OnInit{
+export class HomepageComponent implements OnInit {
   showHomePage = true;
   searchResults = [];
   gameScreenshots!: any[];
   upComingGames: any[] = [];
   popularGames: any[] = [];
-  newGames: any[] =[]; 
+  newGames: any[] = [];
+  favorites: any;
 
   toggleFavorite(game: Game): void {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    const index = favorites.findIndex((f: { id: number; }) => f.id === game.id);
-    if (index > -1) {
-      favorites.splice(index, 1);
-    } else {
-      favorites.push(game);
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    // Ensure favorites is an array
+    if (!Array.isArray(favorites)) {
+      favorites = [];
     }
+
+    const index = favorites.findIndex((f: { id: number }) => f.id === game.id);
+    if (index > -1) {
+      favorites.splice(index, 1);  // Remove from favorites
+    } else {
+      favorites.push(game);  // Add to favorites
+    }
+
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
-  
 
   isFavorite(game: Game): boolean {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    return favorites.some((f: { id: number; }) => f.id === game.id);
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    // Ensure favorites is an array
+    if (!Array.isArray(favorites)) {
+      favorites = [];
+    }
+
+    return favorites.some((f: { id: number }) => f.id === game.id);
   }
-  
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router 
-  ) {}
-  onClick() {this.showHomePage = false;}
- 
+    private router: Router
+  ) { }
+  onClick() { this.showHomePage = false; }
+
   ngOnInit() {
+
+    const storedFavorites = localStorage.getItem('favorites');
+    this.favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+    if (!Array.isArray(this.favorites)) {
+      this.favorites = [];
+    }
 
     //UPCOMING GAMES
     const nextYear = new Date();
@@ -89,8 +107,8 @@ export class HomepageComponent implements OnInit{
 
     //NEW GAMES
     const apiUrl3 = `https://api.rawg.io/api/games?key=${API_KEY}&dates=${lastYearDate},${currentDate}&ordering=-released&page_size=10`;
-    
-      // Save data in sessionStorage
+
+    // Save data in sessionStorage
     const newGamesData = sessionStorage.getItem('newGames');
     if (newGamesData) {
       this.newGames = JSON.parse(newGamesData);
